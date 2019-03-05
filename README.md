@@ -78,7 +78,7 @@ ___
 >这里如要注意 `./src/views/**/*.js` 和 `./src/views/**/*.html` 的路径，它们都是以执行脚本命令的目录（一般为项目根目录）为基准，而不是以build目录为基准。
 ```
 ...
-const webpackConfig = {
+let webpackConfig = {
   ...
   entry: utils.getEntries('./src/views/**/*.js'),
   ...
@@ -88,6 +88,10 @@ const webpackConfig = {
 webpackConfig.plugins = webpackConfig.plugins || []
 webpackConfig.plugins = webpackConfig.plugins.concat(utils.generHtmlWebpackPlugins('./src/views/**/*.html'))
 ...
+```
+> 这里的entry如果有自定义的一些库，可以用`Object.assign`合并一下
+```
+entry: Object.assign({flexible:'lib-flexible'}, utils.getEntries('./src/views/**/*.js')),
 ```
 ____
 
