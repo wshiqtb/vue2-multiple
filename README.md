@@ -13,6 +13,7 @@ ____
 + `build/utils.js` 中添加辅助函数（匹配入口文件，构建json数据）
 + `build/webpack.base.conf.js` 中修改entry和htmlwebpackplugin的配置
 + `build/webpack.dev.conf.js, build/webpack.prod.conf.js`  中注释掉原来的htmlwebpackplugin配置
+
 ##关键代码
 主要文件和修改的代码
 _____
@@ -22,15 +23,16 @@ _____
 |--- src
     |--- views // 入口页面和入口js
       |--- admin 
-          |--- App.vue 
-          |--- admin.js
-          |--- admin.html
+          |--- App.vue #vue根挂载点
+          |--- admin.js #入口js
+          |--- admin.html #入口html模版
       	|--- index
           |--- App.vue
             |--- index.js
             |--- index.html
 ```
 ______
+
 ### `build/utils.js` 
 ```
 ...
@@ -71,6 +73,7 @@ exports.generHtmlWebpackPlugins = (globPath, options)=>{
 }
 ```
 ___
+
 ### `build/webpack.base.conf.js`
 >这里如要注意 `./src/views/**/*.js` 和 `./src/views/**/*.html` 的路径，它们都是以执行脚本命令的目录（一般为项目根目录）为基准，而不是以build目录为基准。
 ```
