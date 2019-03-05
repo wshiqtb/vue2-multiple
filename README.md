@@ -20,13 +20,13 @@ _____
 注意项，js和html的名字要一样，因为入口和页面在htmlwebpackplugin中会进行动态匹配，过滤非当前入口的chunks
 ```
 |--- src
-  	|--- views // 入口页面和入口js
-    	|--- admin 
-        	|--- App.vue 
-            |--- admin.js
-            |--- admin.html
+    |--- views // 入口页面和入口js
+      |--- admin 
+          |--- App.vue 
+          |--- admin.js
+          |--- admin.html
       	|--- index
-        	|--- App.vue
+          |--- App.vue
             |--- index.js
             |--- index.html
 ```
@@ -96,9 +96,9 @@ ____
 在router中创建不同入口页面的路由，并在views的入口js中引入对应的路由
 ```
 |--- src
-	|--- router
-		|--- admin.js
-		|--- index.js
+  |--- router
+	  |--- admin.js
+	  |--- index.js
 ```
 **`views/admin/admin.js`**
 ```
