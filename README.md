@@ -17,7 +17,7 @@ ____
 ## 关键代码
 主要文件和修改的代码
 
-1. ### 新增入口页面
+### 新增入口页面
 注意项，js和html的名字要一样，因为入口和页面在htmlwebpackplugin中会进行动态匹配，过滤非当前入口的chunks
 ```
 |--- src
@@ -33,7 +33,7 @@ ____
 ```
 ______
 
-2. ### `build/utils.js` 
+### `build/utils.js` 
 ```
 ...
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -74,7 +74,7 @@ exports.generHtmlWebpackPlugins = (globPath, options)=>{
 ```
 ___
 
-3. ### `build/webpack.base.conf.js`
+### `build/webpack.base.conf.js`
 >这里如要注意 `./src/views/**/*.js` 和 `./src/views/**/*.html` 的路径，它们都是以执行脚本命令的目录（一般为项目根目录）为基准，而不是以build目录为基准。
 ```
 ...
@@ -91,11 +91,11 @@ webpackConfig.plugins = webpackConfig.plugins.concat(utils.generHtmlWebpackPlugi
 ```
 ____
 
-4. ### `build/webpack.dev.conf.js, build/webpack.prod.conf.js`
+### `build/webpack.dev.conf.js, build/webpack.prod.conf.js`
 > 这两个文件只需要注释掉htmlwebpackplugins的插件部分代码即可
 > 如果想给prod的htmlwebpackplugins指定不同的配置，则可修改utils的generHtmlWebpackPlugins为只返回配置参数，将`build/webpack.base.conf.js`中的htmlwebpackplugins配置在`build/webpack.prod.conf.js,build/webpack.dev.conf.js`中进行特定参数合并，再new。
 
-5. ### 创建不同页面的路由
+### 创建不同页面的路由
 在router中创建不同入口页面的路由，并在views的入口js中引入对应的路由
 ```
 |--- src
