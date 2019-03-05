@@ -14,7 +14,7 @@ ____
 + `build/webpack.base.conf.js` 中修改entry和htmlwebpackplugin的配置
 + `build/webpack.dev.conf.js, build/webpack.prod.conf.js`  中注释掉原来的htmlwebpackplugin配置
 
-##关键代码
+## 关键代码
 主要文件和修改的代码
 _____
 ### 新增入口页面
