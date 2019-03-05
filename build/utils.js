@@ -102,6 +102,7 @@ exports.createNotifierCallback = () => {
   }
 }
 
+// 返回匹配文件的map, {filename: filepath, ...}
 exports.getEntries = (globPath, options)=>{
   var entries = {};
 
@@ -115,6 +116,7 @@ exports.getEntries = (globPath, options)=>{
   return entries;
 }
 
+// 返回htmlwebpackplugin插件配置
 exports.generHtmlWebpackPlugins = (globPath, options)=>{
   var htmlwp = [],
       pages = exports.getEntries(globPath,options);

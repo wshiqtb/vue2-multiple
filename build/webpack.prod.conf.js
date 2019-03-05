@@ -143,7 +143,7 @@ if (config.build.bundleAnalyzerReport) {
 }
 
 // @qtb 自定义多入口
-webpackConfig.plugins = webpackConfig.plugins || []
-webpackConfig.plugins.concat(utils.generHtmlWebpackPlugins('./src/views/**/*.html'))
+// webpackConfig.plugins = webpackConfig.plugins || []
+// webpackConfig.plugins.concat(utils.generHtmlWebpackPlugins('./src/views/**/*.html'))
 
 module.exports = webpackConfig
