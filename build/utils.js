@@ -2,7 +2,9 @@
 const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const packageConfig = require('../package.json')
+const glob = require('glob')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -98,4 +100,35 @@ exports.createNotifierCallback = () => {
       icon: path.join(__dirname, 'logo.png')
     })
   }
+}
+
+exports.getEntries = (globPath, options)=>{
+  var entries = {};
+
+  glob.sync(globPath,options).forEach(entry=>{
+    var basename, extname;
+    extname = path.extname(entry);
+    basename = path.basename(entry,extname);
+    entries[basename] = entry;
+  })
+
+  return entries;
+}
+
+exports.generHtmlWebpackPlugins = (globPath, options)=>{
+  var htmlwp = [],
+      pages = exports.getEntries(globPath,options);
+
+  Object.keys(pages).forEach(name=>{
+    htmlwp.push(new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, `../dist/${name}.html`),
+      template: pages[name],
+      inject: true,
+      excludeChunks: Object.keys(pages).filter(item => {
+        return (item != name)
+      })
+    }))
+  })
+
+  return htmlwp;
 }

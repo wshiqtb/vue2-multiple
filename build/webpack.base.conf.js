@@ -3,18 +3,16 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 
-
-module.exports = {
+const webpackConfig = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './src/main.js'
-  },
+  entry: utils.getEntries('./src/views/**/*.js'),
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -80,3 +78,9 @@ module.exports = {
     child_process: 'empty'
   }
 }
+
+// @qtb 自定义多入口
+webpackConfig.plugins = webpackConfig.plugins || []
+webpackConfig.plugins = webpackConfig.plugins.concat(utils.generHtmlWebpackPlugins('./src/views/**/*.html'))
+
+module.exports = webpackConfig
