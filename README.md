@@ -104,8 +104,8 @@ ____
 ```
 |--- src
   |--- router
-	  |--- admin.js
-	  |--- index.js
+    |--- admin.js
+    |--- index.js
 ```
 **`views/admin/admin.js`**
 ```
