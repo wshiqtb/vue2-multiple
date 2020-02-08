@@ -26,7 +26,7 @@ ____
           |--- App.vue #vue根挂载点
           |--- admin.js #入口js
           |--- admin.html #入口html模版
-      	|--- index
+      |--- index
           |--- App.vue
           |--- index.js
           |--- index.html
